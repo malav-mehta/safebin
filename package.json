@@ -6,6 +6,9 @@
   "repository": "https://github.com/malav-mehta/safebin",
   "author": "Malav Mehta",
   "license": "MIT",
+  "scripts": {
+    "start": "nodemon index.ts"
+  },
   "dependencies": {
     "express": "^4.17.1"
   },
