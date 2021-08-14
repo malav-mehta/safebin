@@ -1,14 +1,3 @@
-type TPaste = {
-  password: string;
-  expirationTime: number;
-  createdAt: number;
-  language: string;
-  title: string;
-  hasPassword: boolean;
-  readCount: number;
-  pasteContent: string;
-};
-
 type TClientPaste = {
   expirationLength: number;
   hasPassword: boolean;

@@ -2,7 +2,13 @@ import axios from "./axios";
 
 const BASE_URL = "/paste";
 
-const get = async (shortLink: string, password: string) => {
+const get = async ({
+  shortLink,
+  password,
+}: {
+  shortLink: string;
+  password: string;
+}) => {
   try {
     const result = await axios.post(BASE_URL + "/get", {
       shortLink: shortLink,
@@ -33,7 +39,9 @@ const insert = async (paste: TClientPaste) => {
   }
 };
 
-export default {
+const Paste = {
   get,
   insert,
 };
+
+export default Paste;

@@ -4,6 +4,7 @@ import bcrypt from "bcrypt";
 
 import { ddb, p, s3 } from "../aws";
 import { Paste, TPaste } from "../models";
+import { CompleteMultipartUploadRequest } from "@aws-sdk/client-s3";
 
 const BUCKET_NAME = "safebin";
 
@@ -123,6 +124,7 @@ const incrementReads = async (short_link: string) => {
 const remove = async (short_link: string) => {
   try {
     const result = await ddb.client.delete(Paste.del(short_link)).promise();
+    const pathRes = await deletePastePath(short_link);
     console.log(`Deleted paste with link ${short_link}`);
     return { hasError: false, result };
   } catch (err) {
@@ -196,6 +198,22 @@ const fetchPastePath = async (shortLink: string) => {
     return { hasError: false, pasteContent: (data.Body || "").toString() };
   } catch (err) {
     console.log(`Error fetching paste content for ${shortLink}:\n${p(err)}`);
+    return { hasError: true, err };
+  }
+};
+
+const deletePastePath = async (shortLink: string) => {
+  try {
+    const data = await s3.root
+      .deleteObject({
+        Bucket: BUCKET_NAME,
+        Key: `${shortLink}.txt`,
+      })
+      .promise();
+    console.log(`Deleted paste content for ${shortLink}`);
+    return { hasError: false };
+  } catch (err) {
+    console.log(`Error deleting paste content for ${shortLink}:\n${p(err)}`);
     return { hasError: true, err };
   }
 };
