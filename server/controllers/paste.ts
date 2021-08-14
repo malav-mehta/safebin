@@ -237,6 +237,5 @@ export default {
   createTable,
   insert,
   get,
-  exists,
   formatRawData,
 };
