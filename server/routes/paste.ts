@@ -15,6 +15,7 @@ routes.post("/insert", async (req, res) => {
     hasPassword: req.body.hasPassword,
     password: req.body.password,
     language: req.body.language,
+    title: req.body.title,
     pasteContent: req.body.pasteContent,
     ip,
   });

@@ -5,6 +5,7 @@ export type TPaste = {
   has_password: boolean;
   password: string;
   read_count: number;
+  title: string;
   language: string;
   paste_path: string;
 };

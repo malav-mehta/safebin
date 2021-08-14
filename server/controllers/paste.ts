@@ -205,6 +205,7 @@ const formatRawData = async ({
   hasPassword,
   password,
   language,
+  title,
   pasteContent,
   ip,
 }: {
@@ -212,6 +213,7 @@ const formatRawData = async ({
   hasPassword: boolean;
   password: string;
   language: string;
+  title: string;
   pasteContent: string;
   ip: string;
 }) => {
@@ -225,6 +227,7 @@ const formatRawData = async ({
     has_password: hasPassword,
     password: await encryptPassword(password),
     read_count: 0,
+    title,
     language,
     paste_path: await getPastePath(link, pasteContent),
   };
