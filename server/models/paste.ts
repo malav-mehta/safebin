@@ -4,7 +4,7 @@ export type TPaste = {
   expiration_time: number;
   has_password: boolean;
   password: string;
-  reads: number;
+  read_count: number;
   language: string;
   paste_path: string;
 };

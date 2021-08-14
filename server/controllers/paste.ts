@@ -55,9 +55,9 @@ const insert = async (paste: TPaste) => {
 
 const get = async (short_link: string, userPassword: string) => {
   try {
-    const paste = await ddb.client.get(Paste.read(short_link)).promise();
+    const rawPaste = await ddb.client.get(Paste.read(short_link)).promise();
 
-    if (Object.keys(paste).length === 0) {
+    if (Object.keys(rawPaste).length === 0) {
       console.log(
         `Error reading paste with link ${short_link}: paste does not exist.`
       );
@@ -65,6 +65,8 @@ const get = async (short_link: string, userPassword: string) => {
     } else {
       console.log(`Read paste with link ${short_link}`);
     }
+
+    const paste = rawPaste.Item;
 
     // @ts-ignore
     if (paste.expiration_time < Date.now()) {
@@ -84,6 +86,8 @@ const get = async (short_link: string, userPassword: string) => {
       return { hasError: true, err: fetchPastePathResult.err };
     }
 
+    await incrementReads(short_link);
+
     return {
       hasError: false,
       paste: { ...paste, paste_content: fetchPastePathResult.pasteContent },
@@ -100,7 +104,7 @@ const incrementReads = async (short_link: string) => {
       .update(
         Paste.update({
           short_link,
-          updateExpression: "set reads = reads + :r",
+          updateExpression: "set read_count = read_count + :r",
           expressionAttributes: {
             ":r": 1,
           },
@@ -220,7 +224,7 @@ const formatRawData = async ({
     expiration_time: now + expirationLength,
     has_password: hasPassword,
     password: await encryptPassword(password),
-    reads: 0,
+    read_count: 0,
     language,
     paste_path: await getPastePath(link, pasteContent),
   };
