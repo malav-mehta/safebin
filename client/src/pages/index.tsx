@@ -1,22 +1,7 @@
-import { BrowserRouter, Switch, Route } from "react-router-dom";
+import Router from "./router";
 
-import Home from "./home";
-import Paste from "./paste";
-
-const Router = () => {
-  return (
-    <BrowserRouter>
-      <Switch>
-        <Route path="/:shortLink">
-          <Paste />
-        </Route>
-
-        <Route path="/" exact>
-          <Home />
-        </Route>
-      </Switch>
-    </BrowserRouter>
-  );
+const App = () => {
+  return <Router />;
 };
 
-export default Router;
+export default App;

@@ -18,6 +18,7 @@ const PastePage = () => {
       Paste.get({ shortLink, password }).then((result) => {
         setLoading(false);
         setPaste(result);
+        setPassword("");
       });
     }
   });
@@ -59,6 +60,8 @@ const PastePage = () => {
                   }
                 )}
               </p>
+              <p>{paste.paste?.language}</p>
+              <p>Reads: {paste.paste?.read_count}</p>
             </div>
           ) : (
             <p>{"Error: " + paste.err?.code || "Error"}</p>
@@ -68,18 +71,5 @@ const PastePage = () => {
     </div>
   );
 };
-
-// type TServerPaste = {
-//   password: string;
-//   paste_path: string;
-//   expiration_time: number;
-//   created_at: number;
-//   language: string;
-//   title: string;
-//   short_link: string;
-//   has_password: boolean;
-//   read_count: number;
-//   paste_content: string;
-// };
 
 export default PastePage;

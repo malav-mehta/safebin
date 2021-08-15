@@ -3,11 +3,11 @@ import ReactDOM from "react-dom";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 
-import Router from "./pages";
+import App from "./pages";
 
 ReactDOM.render(
   <React.StrictMode>
-    <Router />
+    <App />
   </React.StrictMode>,
   document.getElementById("root")
 );

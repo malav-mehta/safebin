@@ -7,7 +7,7 @@
   "author": "Malav Mehta",
   "license": "MIT",
   "scripts": {
-    "start": "nodemon index.ts"
+    "start": "concurrently \"cd client && yarn start\" \"cd dynamodb && java -Djava.library.path=./DynamoDBLocal_lib -jar DynamoDBLocal.jar -sharedDb\" \"nodemon index.ts\""
   },
   "dependencies": {
     "@aws-sdk/client-dynamodb": "^3.25.0",
@@ -31,6 +31,7 @@
     "@types/react-router-dom": "^5.1.8",
     "@typescript-eslint/eslint-plugin": "^4.29.1",
     "@typescript-eslint/parser": "^4.29.1",
+    "concurrently": "^6.2.1",
     "eslint": "^7.32.0",
     "nodemon": "^2.0.12",
     "prettier": "^2.3.2",
