@@ -44,6 +44,7 @@ const NavigationBar = () => {
                 style={{
                   fontFamily: "monospace",
                 }}
+                value={link}
                 onChange={handleLinkChange}
               />
             </Form.Group>

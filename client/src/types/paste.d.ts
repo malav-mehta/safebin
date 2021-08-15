@@ -1,7 +1,8 @@
 type TClientPaste = {
   expirationLength: number;
-  hasPassword: boolean;
+  hasPassword?: boolean;
   password: string;
+  language: string;
   title: string;
   pasteContent: string;
 };

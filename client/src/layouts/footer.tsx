@@ -2,7 +2,7 @@ import { Container } from "react-bootstrap";
 
 const Footer = () => {
   return (
-    <footer className="sticky-bottom bg-white py-3 border-top">
+    <footer className="sticky-bottom bg-white pt-3 border-top">
       <Container>
         <p>
           <i>safebin.</i> Copyright © 2021. Author:{" "}
