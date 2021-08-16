@@ -5,8 +5,8 @@ import { Paste } from "./controllers";
 import routes from "./routes";
 
 export const initApp = async () => {
-  await Paste.createTable();
-  await Paste.createBucket();
+  // await Paste.createTable();
+  // await Paste.createBucket();
 };
 
 const app = express();
