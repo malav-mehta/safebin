@@ -1,4 +1,4 @@
-export const APP_URL = "http://localhost:3000";
+export const APP_URL = "https://safebin.netlify.app";
 
 export type TExpirationLength = {
   caption: string;
