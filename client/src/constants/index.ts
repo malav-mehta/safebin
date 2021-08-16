@@ -1,4 +1,4 @@
-export const APP_URL = "https://safebin.netlify.app";
+export const APP_URL = "http://safebin.surge.sh";
 
 export type TExpirationLength = {
   caption: string;
