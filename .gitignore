@@ -120,3 +120,6 @@ dynamodb/
 
 # EC2
 *.pem
+
+# build
+build
