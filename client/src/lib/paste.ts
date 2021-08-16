@@ -23,11 +23,6 @@ const get = async ({
       shortLink: shortLink,
       password: password,
     });
-    if (result.data.paste) {
-      const { hasPassword, pasteContent } = result.data.paste;
-      if (hasPassword)
-        result.data.paste.pasteContent = decryptData(pasteContent, password);
-    }
     return result.data;
   } catch (err) {
     console.error(
@@ -58,6 +53,7 @@ const insert = async (paste: TClientPaste) => {
 const Paste = {
   get,
   insert,
+  decryptData,
 };
 
 export default Paste;
