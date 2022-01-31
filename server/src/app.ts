@@ -18,4 +18,8 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use("/api/v1", routes.v1);
 
+app.get("/", (req, res) => {
+  res.send("Hello, world!");
+});
+
 export default app;

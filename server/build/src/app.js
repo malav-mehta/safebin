@@ -43,15 +43,19 @@ exports.port = exports.initApp = void 0;
 var express_1 = __importDefault(require("express"));
 var cors_1 = __importDefault(require("cors"));
 var routes_1 = __importDefault(require("./routes"));
-exports.initApp = function () { return __awaiter(void 0, void 0, void 0, function () {
+var initApp = function () { return __awaiter(void 0, void 0, void 0, function () {
     return __generator(this, function (_a) {
         return [2 /*return*/];
     });
 }); };
+exports.initApp = initApp;
 var app = express_1.default();
 exports.port = process.env.PORT || 3000;
 app.use(cors_1.default());
 app.use(express_1.default.json());
 app.use(express_1.default.urlencoded({ extended: true }));
 app.use("/api/v1", routes_1.default.v1);
+app.get("/", function (req, res) {
+    res.send("Hello, world!");
+});
 exports.default = app;

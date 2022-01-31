@@ -370,7 +370,8 @@ var deletePastePath = function (shortLink) { return __awaiter(void 0, void 0, vo
 var formatRawData = function (_a) {
     var expirationLength = _a.expirationLength, hasPassword = _a.hasPassword, password = _a.password, language = _a.language, title = _a.title, pasteContent = _a.pasteContent, ip = _a.ip;
     return __awaiter(void 0, void 0, void 0, function () {
-        var now, link, paste, _b;
+        var now, link, paste;
+        var _b;
         return __generator(this, function (_c) {
             switch (_c.label) {
                 case 0:
